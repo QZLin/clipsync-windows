@@ -176,7 +176,7 @@ namespace ClipSync {
         private void StartServerButton_Click(object sender, EventArgs e) {
             this.startServerButton.Enabled = false;
             this.LogWriter("Starting server on ");
-            string url = "http://" + "*" + ":" + this.serverPortTextBox.Text + "/";
+            string url = "http://" + this.serverAddressTextBox.Text + ":" + this.serverPortTextBox.Text + "/";
             this.LogWriter(url);
             try {
                 //SignalR = WebApp.Start<Startup>(url);

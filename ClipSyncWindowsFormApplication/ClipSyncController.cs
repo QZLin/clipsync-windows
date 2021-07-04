@@ -77,6 +77,9 @@ namespace ClipSync
                 //this.serverAddressTextBox.Text = "localhost";
 
                 this.connectUidTextBox.Text = new Random().Next(1000, 9999).ToString();
+                //auto start server and self login on start
+                this.StartServerButton_Click(null, null);
+                this.LoginButton_Click(null, null);
 
 
             }

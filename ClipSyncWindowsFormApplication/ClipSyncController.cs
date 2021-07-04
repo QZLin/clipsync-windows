@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Diagnostics;
+using System.IO;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
@@ -76,8 +77,13 @@ namespace ClipSync
                 this.serverAddressTextBox.Text = "*";
                 //this.serverAddressTextBox.Text = "localhost";
 
-                this.connectUidTextBox.Text = new Random().Next(1000, 9999).ToString();//TODO
-                this.connectUidTextBox.Text = 2694.ToString();
+                if (File.Exists("last_uid"))
+                    this.connectUidTextBox.Text = File.ReadAllText("last_uid");
+                else
+                {
+                    this.connectUidTextBox.Text = new Random().Next(1000, 9999).ToString();
+                    File.WriteAllText("last_uid", this.connectUidTextBox.Text);
+                }
                 //auto start server and self login on start
                 this.StartServerButton_Click(null, null);
                 this.LoginButton_Click(null, null);
